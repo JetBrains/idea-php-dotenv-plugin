@@ -1,0 +1,6 @@
+name: base
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  # - Add other conda packages here if needed
