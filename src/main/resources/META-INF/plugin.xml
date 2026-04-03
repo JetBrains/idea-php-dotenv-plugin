@@ -190,6 +190,7 @@
 
         <typedHandler implementation="ru.adelf.idea.dotenv.completion.NestedVariableTypedHandlerDelegate"/>
 
+        <applicationSettings service="ru.adelf.idea.dotenv.DotEnvSettings"/>
     </extensions>
 
     <extensions defaultExtensionNs="ru.adelf.idea.dotenv">
