@@ -27,6 +27,7 @@ jvm_library(
 
 jvm_library(
   name = "python_test_lib",
+  testonly = True,
   module_name = "intellij.dotenv.python",
   visibility = ["//visibility:public"],
   srcs = glob([], allow_empty = True),
