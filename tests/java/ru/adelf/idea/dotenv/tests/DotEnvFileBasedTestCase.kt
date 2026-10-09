@@ -8,11 +8,9 @@ import com.intellij.codeInspection.LocalInspectionTool
 import com.intellij.openapi.application.PathManager
 import com.intellij.openapi.command.CommandProcessor
 import com.intellij.psi.impl.DebugUtil
-import com.intellij.testFramework.LexerTestCase
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import com.intellij.testFramework.runInEdtAndWait
 import ru.adelf.idea.dotenv.extension.symbols.DotEnvKeySymbol
-import ru.adelf.idea.dotenv.grammars.DotEnvLexerAdapter
 
 abstract class DotEnvFileBasedTestCase : BasePlatformTestCase() {
 
@@ -33,13 +31,6 @@ abstract class DotEnvFileBasedTestCase : BasePlatformTestCase() {
     fun doPsiDumpTest() {
         val referenceFile = "${testDataPath}/${filenamePrefixForCurrentTest("txt")}"
         val actual = DebugUtil.psiToString(myFixture.file, true)
-        assertSameLinesWithFile(referenceFile, actual)
-    }
-
-    fun doLexerTest() {
-        val referenceFile = "${testDataPath}/${filenamePrefixForCurrentTest("txt")}"
-        val text = myFixture.file.text
-        val actual = LexerTestCase.printTokens(text, 0, DotEnvLexerAdapter())
         assertSameLinesWithFile(referenceFile, actual)
     }
 

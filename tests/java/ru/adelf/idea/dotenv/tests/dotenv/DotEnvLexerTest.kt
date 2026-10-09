@@ -1,21 +1,37 @@
 package ru.adelf.idea.dotenv.tests.dotenv
 
-import ru.adelf.idea.dotenv.tests.DotEnvFileBasedTestCase
+import com.intellij.openapi.application.PathManager
+import com.intellij.platform.testFramework.junit5.codeInsight.fixture.lexerFixture
+import com.intellij.testFramework.junit5.fixture.TestFixtures
+import org.junit.jupiter.api.Test
+import ru.adelf.idea.dotenv.grammars.DotEnvLexerAdapter
 
-class DotEnvLexerTest : DotEnvFileBasedTestCase() {
+@TestFixtures
+class DotEnvLexerTest {
+  private val lexer by lexerFixture(
+    "${PathManager.getCommunityHomePath()}/plugins/env-files-support/tests/testResources/ru/adelf/idea/dotenv/tests/dotenv/fixtures",
+    trimTestData = false,
+  ) { DotEnvLexerAdapter() }
 
-  fun testLexerComments() = doLexerTest()
+  @Test
+  fun testLexerComments() = lexer.doFileTest("env")
 
-  fun testLexerProperties() = doLexerTest()
+  @Test
+  fun testLexerProperties() = lexer.doFileTest("env")
 
-  fun testLexerQuotes() = doLexerTest()
+  @Test
+  fun testLexerQuotes() = lexer.doFileTest("env")
 
-  fun testLexerNestedVariables() = doLexerTest()
+  @Test
+  fun testLexerNestedVariables() = lexer.doFileTest("env")
 
-  fun testLexerCompletionTokens() = doLexerTest()
+  @Test
+  fun testLexerCompletionTokens() = lexer.doFileTest("env")
 
-  fun testLexerAllowsEmptyNestedVariables() = doLexerTest()
+  @Test
+  fun testLexerAllowsEmptyNestedVariables() = lexer.doFileTest("env")
 
-  fun testLexerAllowsNonGrammaticalDollarSymbols() = doLexerTest()
+  @Test
+  fun testLexerAllowsNonGrammaticalDollarSymbols() = lexer.doFileTest("env")
 
 }
