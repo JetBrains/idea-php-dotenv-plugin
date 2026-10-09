@@ -5,6 +5,7 @@ import com.intellij.codeInsight.lookup.LookupManager
 import com.intellij.codeInsight.lookup.impl.LookupImpl
 import com.intellij.codeInsight.template.impl.TemplateManagerImpl
 import com.intellij.codeInspection.LocalInspectionTool
+import com.intellij.openapi.application.PathManager
 import com.intellij.openapi.command.CommandProcessor
 import com.intellij.psi.impl.DebugUtil
 import com.intellij.testFramework.LexerTestCase
@@ -105,8 +106,8 @@ abstract class DotEnvFileBasedTestCase : BasePlatformTestCase() {
             }
     }
 
-    override fun getBasePath(): String = "testResources/ru/adelf/idea/dotenv/tests"
+    override fun getBasePath(): String = "plugins/env-files-support/tests/testResources/ru/adelf/idea/dotenv/tests"
 
-    protected override fun getTestDataPath(): String = "$basePath/dotenv/fixtures"
+    protected override fun getTestDataPath(): String = "${PathManager.getCommunityHomePath()}/$basePath/dotenv/fixtures"
 
 }
